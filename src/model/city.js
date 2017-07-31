@@ -12,4 +12,7 @@ const schema = new Schema({
   country: String
 });
 
-export default mongoose.model('City', schema);
+const SmallCity = mongoose.model('SmallCity', schema);
+const LargeCity = mongoose.model('LargeCity', schema);
+
+export {SmallCity, LargeCity};
