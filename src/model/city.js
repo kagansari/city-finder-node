@@ -5,6 +5,10 @@ const schema = new Schema({
     type: String,
     index: 'text'
   },
+  slug: {
+    type: String,
+    index: 'text'
+  },
   country: String
 });
 

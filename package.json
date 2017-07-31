@@ -24,7 +24,8 @@
     "babel-preset-es2015": "^6.24.1",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
-    "mongoose": "^4.11.4"
+    "mongoose": "^4.11.4",
+    "slug": "^0.9.1"
   },
   "devDependencies": {
     "nodemon": "^1.11.0"
