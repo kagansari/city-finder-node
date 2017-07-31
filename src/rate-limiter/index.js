@@ -55,13 +55,13 @@ function refresh() {
 /*
  * return middleware checking each user can send at most {newReqNum} requests in {newTimeWindow} ms
  *
- * newTimeWindow - time interval (ms) default: 1000
- * newReqNum     - max request number sent in default: 3
+ * newTimeWindow - time interval (ms)
+ * newReqNum     - max request number available in time interval
  */
 export default function(newTimeWindow=2000, newReqNum=3) {
   reqNum = newReqNum;
   timeWindow = newTimeWindow;
-  setInterval(refresh, 5000);
+  setInterval(refresh, 10000);
 
   return (req, res, next) => {
     if (isAllowed(req)) {

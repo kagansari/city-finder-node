@@ -19,7 +19,6 @@ export default function() {
   // initialise the queue and offset
   var queue  = [];
   var offset = 0;
-  let a;
 
   // Returns the length of the queue.
   this.getLength = function(){
