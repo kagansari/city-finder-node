@@ -91,7 +91,7 @@
 
       $scope.search = function(q) {
         var d = $q.defer();
-        $http.get('http://54.77.168.95:3000/search?q=' + q + '&dataset=' + $scope.dataset)
+        $http.get('http://54.77.168.95/search?q=' + q + '&dataset=' + $scope.dataset)
           .then(function(res) {
             console.log('fetched', res.data);
             d.resolve(res.data);
