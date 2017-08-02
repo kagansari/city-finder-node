@@ -45,7 +45,7 @@ function refresh() {
     const initTime = userMap[ip].peek();
     const threshold = (currTime - initTime) * 2;
     // difference between front and back of the queue can be at most {timeWindow}
-    if (currTime - initTime > timeWindow*2) {
+    if (currTime - initTime > threshold) {
       delete userMap[ip];
       // console.log(`user ${ip} has not visited for a long time, deleting`);
     }
