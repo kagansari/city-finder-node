@@ -7,7 +7,29 @@
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
   <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
-  <link rel="stylesheet" href="app.css">
+  <style>
+    .container {
+      max-width: 700px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+    .md-display-3 {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 40px;
+    }
+
+    md-radio-group {
+      display: flex;
+      margin-bottom: 10px;
+    }
+
+    md-radio-button {
+      margin-right: 20px;
+      margin-left: 20px;
+    }
+  </style>
 
   <title>City Finder</title>
   <meta name="author" content="Kagan Sari">
@@ -51,6 +73,40 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular-messages.min.js"></script>
   <!-- Angular Material Library -->
   <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
-  <script src="app.js"></script>
+  <script type="text/javascript">
+    var app = angular.module('app', ['ngMaterial']);
+
+    app.controller('MainCtrl', function ($scope, $timeout, $q, $http, $mdToast) {
+
+      $scope.dataset = 'small';
+
+      function toast(message) {
+        $mdToast.show(
+          $mdToast.simple()
+            .position('top right')
+            .textContent(message)
+            .hideDelay(2000)
+        );
+      }
+
+      $scope.search = function(q) {
+        var d = $q.defer();
+        $http.get('http://54.77.168.95:3000/search?q=' + q + '&dataset=' + $scope.dataset)
+          .then(function(res) {
+            console.log('fetched', res.data);
+            d.resolve(res.data);
+            if (res.data.length == 0) $scope.errorMessage = "No cities matching '" + $scope.searchText + "' were found";
+          })
+          .catch(function(err) {
+            console.log('error', err);
+            d.resolve([]);
+            $scope.errorMessage = err.data.message;
+            toast(err.data.message);
+          });
+        return d.promise;
+      };
+
+    })
+  </script>
 </body>
 </html>
