@@ -1,12 +1,14 @@
 import express from 'express';
 import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import {search as searchCities} from './controller/city';
 import rateLimiterMiddleware from './rate-limiter';
 
 const app = express();
 const port = process.env.port || 3000;
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
