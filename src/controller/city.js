@@ -7,7 +7,6 @@ export function search(req, res) {
 
   if (!dataset.match(/^(small|large)$/)) res.status(400).send({ message: 'Enter at valid dataset' });
   if (!q || q.length < 3) res.status(400).send({ message: 'Enter at least 3 letters' });
-  if (!q || q.length < 3) res.status(400).send({ message: 'Enter at least 3 letters' });
 
   const Model = dataset === 'small' ? SmallCity : LargeCity;
   Model.find({
