@@ -10,7 +10,7 @@ Example document:
 }
 ```
 
-Then I implemented a simple API with one endpoint, created index on `slug` field, used basic mongodb regex search to fetch results. I was planning to use radix tree structure, but it would be overengineering since prefix regex search is lightning fast with index even when querying 3 million documents.
+Then I implemented a simple API with one endpoint, created index on `slug` field, used basic mongodb regex search to fetch results. I was planning to use radix tree structure, but it would be overengineering since prefix regex search is lightning fast with index even when querying 3 million documents. (Do not mind [the demo](http://54.77.168.95), it is the weakest machine on AWS)
 
 ### `/search`
 
@@ -81,3 +81,6 @@ function isAllowed (req) {
   return true;
 }
 ```
+
+##### Demo: http://54.77.168.95/
+##### DB: mongodb://54.77.168.95/city-finder (No authentication)
